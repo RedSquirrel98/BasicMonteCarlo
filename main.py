@@ -57,7 +57,7 @@ def plot_CDF(avg_duration, iterations):
     plt.xticks(numpy.arange(numpy.round(avg_sort[0]), numpy.round(avg_sort[-1]), step=1))   
     plt.ylabel("Confidence")
     plt.yticks(numpy.arange(0, 110,step=10))
-    plt.title("Critical Path CDF")
+    plt.title("Chosen Path CDF")
     plt.grid(b=True, which='major', axis='both')
     plt.show()
 # this function uses matplotlib to plot the PDF of the mean path time   
@@ -82,7 +82,7 @@ def plot_PMF(avg_duration, iterations):
     plt.ylabel("Number of Occurences for Given CP Length")
     plt.xlabel("Calculated CP Length")
     plt.xticks(xlab)   
-    plt.title("Critical Path PMF")
+    plt.title("Chosen Path PMF")
     plt.grid(b=True, which='major', axis='both')
     plt.show()
     
@@ -90,13 +90,14 @@ def plot_PMF(avg_duration, iterations):
 def main():
 
     #list of activities on the critical path: find a way to enter these into a GUI for later
-    A= activity("A",8,9)   
-    B= activity("B",10,12)   
-    C= activity("C",18,22)   
-    D= activity("D",10,15)   
-    E= activity("E",10,12)  
-    CP_List= [A,B,C,D,E] 
-    iterations = 10000  # specify number of Monte Carlo Iterations
+    A= activity("A",2,5)   
+    B= activity("B",1,5)   
+    C= activity("C",1,6)   
+    D= activity("D",4,6)   
+    E= activity("E",6,9)
+    F= activity("F",2,6)  
+    CP_List= [A,B,C,D,E,F] 
+    iterations = 800  # specify number of Monte Carlo Iterations
     
     avg_duration = avg_duration_calc(CP_List,iterations)
     mean_duration = mean_duration_calc(avg_duration,iterations)
